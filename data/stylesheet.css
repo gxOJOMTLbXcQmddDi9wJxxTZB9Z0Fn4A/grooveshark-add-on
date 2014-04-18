@@ -1,0 +1,133 @@
+span {
+	display: none;
+}
+
+img {
+	height: 40px;
+	width= 40px;
+}
+
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    background-color: #333;
+}
+
+div {
+}
+
+.current-song-labels {
+	color : #FFF;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    height: 14px;
+    line-height: 14px;
+    max-width: 266px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.np-text {
+	color: #888;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 14px;
+}
+
+.current-song-labels {
+    color : #FFF;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    height: 14px;
+    line-height: 14px;
+    max-width: 266px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+p {
+    height: 60px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: #69D2E7;
+    text-align: center;
+	color: #FFFFFF;
+    font-family: Verdana, Arial, Sans-Serif;
+    opacity: 0.5;
+    font-size: 1em;
+}
+
+#logo {
+    margin: 0 auto;
+    display: block;
+    height: 30px;
+    width: 100%;
+    background-image: url('logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/*#controls {
+    border: 1px solid blue;
+    padding-top: 4px;
+    padding-left: 6px;
+    padding-right: auto;
+}*/
+
+#controls-container {
+    width: 100%;
+}
+
+/*.button-container {
+    margin-top: auto;
+    margin-bottom: auto;
+	width: 30%;
+    border: 1px solid red;
+    display: inline-block;
+}*/
+
+.control-button {
+    margin: 0 auto;
+	display: block;
+	background-image: url('controls.png');
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+#previous {
+	background-position:-30px 0;
+}
+
+#play {
+	background-position:-120px 0;
+}
+
+#play:hover {
+	background-position:-150px 0;
+}
+
+#pause {
+	background-position:-210px 0;
+}
+
+#pause:hover{
+	background-position:-240px 0;
+}
+
+#previous:hover {
+	background-position:-60px 0;
+}
+
+#next {
+	background-position:-300px 0;
+}
+
+#next:hover {
+	background-position:-330px 0;
+}
