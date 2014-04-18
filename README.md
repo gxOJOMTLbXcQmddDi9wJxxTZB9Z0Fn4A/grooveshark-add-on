@@ -6,12 +6,14 @@ A Grooveshark add-on currently targeted for <a href="http://www.mozilla.org/en-U
 
 **NOTE THAT THIS IS A WORK IN PROGRESS**
 
-== Currently working on: ==
+Currently working on:
+---------------------
  * Proper panel layout / CSS styling. 
  * Enhanced tooltips for next/previous songs (display associated information and arts).
  * Volume management.
  * Current song detailed information management (elapsed time, etc.). 
  
-== TODOs ==
+TODOs
+-----
  * Toolbar integration
  * Contextual menu integration
