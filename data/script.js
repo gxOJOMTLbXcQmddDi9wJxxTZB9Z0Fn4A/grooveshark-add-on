@@ -15,6 +15,9 @@ var togglePlayPause = function() {
 	}
 }
 
+var elapsedTime = 0;
+
+var isIncrementingElapsedTime = false;
 
 $(document).ready(function() {
 	var play = $('.play');
@@ -48,27 +51,64 @@ $(document).ready(function() {
     });
 
     $(document).tooltip();
+
+	window.setInterval(function() {
+		if (isIncrementingElapsedTime) {
+			elapsedTime += 1000;
+			$('#time-elapsed').html(formatDuration(elapsedTime));
+		}
+		self.port.emit("getCurrentSongStatus");
+	}, 1000);
+
 	console.log('loaded');
 });
 
+var formatTime = function(time) {
+	return (time < 10 ? "0" + time : time) 
+};
+
+var formatDuration = function(time) {
+	time /= 1000;
+	var minutes = Math.floor(time / 60);
+	var seconds = Math.ceil(time - minutes * 60);
+	return formatTime(minutes) + ":" + formatTime(seconds);
+};
+
+var updateElapsedTime = function(status) {
+	isIncrementingElapsedTime = (status === 'playing');
+	if (status !== 'paused' && status !== 'bufferring' && status !== 'playing') {
+		elapsedTime = 0;
+	}
+};
+
 self.port.on("songStatusChanged", function(object) {
-	console.log("receiveid songStatusChanged in add-on content script");
-	if (object.song != null) {
-		var songName = object.song.songName;
-		$('#current-song-img').prop('title', songName);
-		$('#current-song-img').prop('src', object.song.artURL);
-		$('#current-song-title').prop('title', songName);
-		$('#current-song-title').html(songName);
-		var artistName = object.song.artistName;
-		$('#current-song-artist').prop('title', artistName);
-		$('#current-song-artist').html(artistName);
-	} else {
-		console.log("No song yet...");
+	if (object != null) {
+		if (object.song != null) {
+			var song = object.song;
+			var songName = song.songName;
+			var imageElement = $('#current-song-img');
+			imageElement.prop('title', songName);
+			imageElement.prop('src', song.artURL);
+			var titleElement = $('#current-song-title');
+			titleElement.prop('title', songName);
+			titleElement.html(songName);
+			var artistName = song.artistName;
+			var artistElement = $('#current-song-artist');
+			artistElement.prop('title', artistName);
+			artistElement.html(artistName);
+			console.log("calculatedDuration: " + song.calculatedDuration/1000);
+			console.log("estimateDuration: " + song.estimateDuration/1000);
+			$('#time-total').html(formatDuration(object.song.calculatedDuration));
+		} else {
+			console.log("No song yet...");
+		}
+		var status = object.status;
+		console.log("Status: " + status);
+		isPaused = object.status === 'paused';
+		if (!clicked) {
+			togglePlayPause();
+		}
+		updateElapsedTime(status);
+		clicked = false;			
 	}
-	console.log("Status: " + object.status);
-	isPaused = object.status === 'paused';
-	if (!clicked) {
-		togglePlayPause();
-	}
-	clicked = false;
 });

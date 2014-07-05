@@ -65,6 +65,10 @@ p {
     font-size: 1em;
 }
 
+#current-song-status {
+    display: none;
+}
+
 #logo {
     margin: 0 auto;
     display: block;

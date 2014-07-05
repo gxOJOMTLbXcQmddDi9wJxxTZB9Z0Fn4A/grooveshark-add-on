@@ -43,32 +43,37 @@ window.addEventListener("GrovesharkSongStatusChangedEvent", function(event) {
 	self.port.emit("songStatusChanged", event.detail);
 }, false);
 
-self.port.on("login", function pause() {
+self.port.on("login", function() {
 	//console.log("received login in add-on groove script");
 	contentEval(groovesharkCallback + "\ngroovesharkCallback();");
 });
 
-self.port.on("pause", function pause() {
+self.port.on("getCurrentSongStatus", function() {
+	//console.log("received login in add-on groove script");
+	contentEval("window.Grooveshark.getCurrentSongStatus()");
+});
+
+self.port.on("pause", function() {
 	//console.log("received pause in add-on groove script");
 	contentEval("window.Grooveshark.pause()");
 });
 
-self.port.on("play", function pause() {
+self.port.on("play", function() {
 	//console.log("received play in add-on groove script");
 	contentEval("window.Grooveshark.play()");
 });
 
-self.port.on("previous", function pause() {
+self.port.on("previous", function() {
 	//console.log("received previous in add-on groove script");
 	contentEval("window.Grooveshark.previous()");
 });
 
-self.port.on("next", function pause() {
+self.port.on("next", function() {
 	//console.log("received next in add-on groove script");
 	contentEval("window.Grooveshark.next()");
 });
 
-self.port.on("togglePlayPause", function pause() {
+self.port.on("togglePlayPause", function() {
 	//console.log("received togglePlayPause in add-on groove script");
 	contentEval("window.Grooveshark.togglePlayPause()");
 });
