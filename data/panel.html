@@ -12,12 +12,52 @@
  -->
 </head>
 <body>
+    <div id="header-container">
+        <a id="logo" href="#">
+          <span class="accessible-title" data-translate-text="LOGO">Open Grooveshark</span>
+        </a>
+    </div>
+    <div id="outer-container">
+        <div id="now-playing-container">
+            <div style="display:inline-block">
+                <img title="?" src="" id="current-song-img" class="img">
+            </div>
+            <div style="display: inline-block;position: relative;vertical-align: super;">
+                <div style="position: absolute;top:-23px">
+                    <span class="current-song-labels" id="current-song-title" title="?">?</span>
+                    <span data-translate-text="BY" class="np-text">&nbsp;by&nbsp;</span>
+                    <span class="current-song-labels" id="current-song-artist" title="?">?</span>
+                </div>
+                <div>
+                    <span id="time-elapsed" class="now-playing-time">03:32</span>            
+                    <div id="progress-bar" style="display:inline-block">
+                        <div style="left: 330.337px;" id="scrubber"></div>
+                        <div style="width: 100%;" id="buffered"></div>
+                        <div style="width: 86.976%;" id="elapsed"></div>
+                    </div>
+                    <span id="time-total" class="now-playing-time">04:04</span>            
+                </div>
+            </div>
+        </div>
+        <div id="controls-container">
+            <a id="previous" class="control-button" href="#">
+                <span class="accessible-title" data-translate-text="QUEUE_PREV_SONG">Previous
+                    Song</span>
+            </a>
+            <a id="play" class="control-button play" href="#">
+                <span class="accessible-title" data-translate-text="PLAY">Play</span>
+            </a>
+            <a id="next" class="control-button" href="#">
+            <span
+                class="accessible-title" data-translate-text="QUEUE_NEXT_SONG">Next
+                    Song</span>
+            </a>
+        </div>
+    </div>
+    <!--
     <table id="controls-container">
         <tr>
             <td colspan="3">
-		        <a id="logo" href="#">
-		          <span class="accessible-title" data-translate-text="LOGO">Open Grooveshark</span>
-		        </a>
         <tr>
             <td>
                 <img title="?" src="" id="current-song-img" class="img">
@@ -42,6 +82,7 @@
                         Song</span>
                 </a>
     </table>
+    -->
     <!-- 
     <table id="controls-container">
         <tr>

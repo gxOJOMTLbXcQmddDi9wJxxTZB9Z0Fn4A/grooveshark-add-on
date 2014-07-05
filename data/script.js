@@ -1,32 +1,48 @@
 // Add-On Content Script
+var isPaused = true;
+
+var clicked = false;
+
+var togglePlayPause = function() {
+	var play =  $('.play');
+	console.log("togglePlayPause: isPaused=" + isPaused);
+	if (isPaused) {
+		play.tooltip({ content: "Play" });
+		play.prop('id', 'play');
+	} else {
+		play.tooltip({ content: "Pause" });
+		play.prop('id', 'pause');
+	}
+}
+
 
 $(document).ready(function() {
-	$('.play').attr('title', "Play");
-	$('.play').click(function() {
-		if ($(this).attr('id') == 'pause') {
-			$(this).tooltip({ content: "Play" });
-			$(this).attr('id', 'play');
-		} else {
-			$(this).tooltip({ content: "Pause" });
-			$(this).attr('id', 'pause');
-		}
+	var play = $('.play');
+	play.prop('title', "Play");
+	play.click(function() {
+		clicked = true;
+		isPaused = $(this).prop('id') === 'pause';
+		togglePlayPause();
     	self.port.emit("togglePlayPause");
-	})
+	});
 	
-	$('#previous').attr('title', "Previous Song");
-    $('#previous').click(function() {
+	var previous = $('#previous');
+	previous.prop('title', "Previous Song");
+    previous.click(function() {
     	console.log("clicked previous in add-on panel")
     	self.port.emit("previous");
     });
     
-	$('#next').attr('title', "Next Song");
-    $('#next').click(function() {
+    var next = $('#next');
+	next.prop('title', "Next Song");
+    next.click(function() {
     	console.log("clicked next in add-on panel")
     	self.port.emit("next");
     });
     
-	$('#logo').attr('title', "Open Grooveshark");
-    $('#logo').click(function() {
+    var logo = $('#logo');
+	logo.prop('title', "Open Grooveshark");
+    logo.click(function() {
     	console.log("clicked logo in add-on panel")
     	self.port.emit("login");
     });
@@ -39,15 +55,20 @@ self.port.on("songStatusChanged", function(object) {
 	console.log("receiveid songStatusChanged in add-on content script");
 	if (object.song != null) {
 		var songName = object.song.songName;
-		$('#current-song-img').attr('title', songName);
-		$('#current-song-img').attr('src', object.song.artURL);
-		$('#current-song-title').attr('title', songName);
+		$('#current-song-img').prop('title', songName);
+		$('#current-song-img').prop('src', object.song.artURL);
+		$('#current-song-title').prop('title', songName);
 		$('#current-song-title').html(songName);
 		var artistName = object.song.artistName;
-		$('#current-song-artist').attr('title', artistName);
-		$('#current-song-title').html(artistName);
+		$('#current-song-artist').prop('title', artistName);
+		$('#current-song-artist').html(artistName);
 	} else {
 		console.log("No song yet...");
 	}
 	console.log("Status: " + object.status);
+	isPaused = object.status === 'paused';
+	if (!clicked) {
+		togglePlayPause();
+	}
+	clicked = false;
 });
