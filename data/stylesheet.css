@@ -7,7 +7,7 @@ span {
 
 img {
 	height: 40px;
-	width= 40px;
+	width: 40px;
 }
 
 body {
@@ -27,8 +27,6 @@ div {
     #line-height: 14px;
     #max-width: 266px;
     text-decoration: none;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 #now-playing-container {
@@ -49,8 +47,6 @@ div {
     #line-height: 14px;
     #max-width: 266px;
     text-decoration: none;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 p {
@@ -102,12 +98,47 @@ p {
     display: inline-block;
 }*/
 
+.song-preview {
+    #width: 140px;
+    height: 45px;
+    #max-width: 140px;
+    width:33%;
+    overflow: hidden;
+}
+
+.song-previous {
+    text-align: left;
+}
+
+.song-preview-artist {
+    #width: 82px;    
+    font-size: 10px;
+    line-height: 13px;
+    color: #666;
+}
+
+.song-next {
+    text-align: right;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-cell {
+    display: table-cell;
+}
+
 .control-button {
     margin: 0 auto;
-	display: inline-block;
+	display: table-cell;    
 	background-image: url('controls.png');
+    background-repeat: no-repeat;
     width:30px;
     height:30px;
+    min-width: 30px;
     cursor: pointer;
     text-align: center;
 }

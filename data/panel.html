@@ -19,50 +19,60 @@
     </div>
     <div id="outer-container" style="display:table">
         <div id="now-playing-container">
-            <div style="display:table-cell">
-                <img title="?" src="" id="current-song-img" class="img">
+            <div class="table-cell">
+                <img title="?" src="http://images.gs-cdn.net/static/albums/30_album.png" id="current-song-img" class="img">
             </div>
-            <div style="display: table-cell;width:100%;vertical-align: middle;">
-                <div style="">
-                    <span class="current-song-labels" id="current-song-title" title="?">?</span>
-                    <span data-translate-text="BY" class="np-text">&nbsp;by&nbsp;</span>
-                    <span class="current-song-labels" id="current-song-artist" title="?">?</span>
-                </div>
+            <div class="table-cell" style="width:100%;vertical-align: middle;">
                 <div>
-                    <span id="time-elapsed" class="now-playing-time">00:00</span>            
+                    <span class="current-song-labels ellipsis" id="current-song-title" title="?">No current song</span>
+                    <span data-translate-text="BY" class="np-text">&nbsp;by&nbsp;</span>
+                    <span class="current-song-labels ellipsis" id="current-song-artist" title="?">No artist</span>
+                </div>
+                <div style="position:relative;">
+                    <span id="time-elapsed" class="now-playing-time ellipsis">00:00</span>            
                     <div id="progress-bar" style="display:inline-block">
                         <div style="left: 330.337px;" id="scrubber"></div>
                         <div style="width: 100%;" id="buffered"></div>
                         <div style="width: 86.976%;" id="elapsed"></div>
                     </div>
-                    <span id="time-total" class="now-playing-time">00:00</span>
+                    <span style="position:absolute;top:0;right:0" id="time-total" class="now-playing-time ellipsis" style="text-align:right">00:00</span>
                 </div>
             </div>
         </div>
         <div id="controls-container">
-            <a id="previous" class="control-button" href="#">
-                <span class="accessible-title" data-translate-text="QUEUE_PREV_SONG">Previous
-                    Song</span>
-            </a>
-            <a id="play" class="control-button play" href="#">
-                <span class="accessible-title" data-translate-text="PLAY">Play</span>
-            </a>
-            <a id="next" class="control-button" href="#">
-            <span
-                class="accessible-title" data-translate-text="QUEUE_NEXT_SONG">Next
-                    Song</span>
-            </a>
+            <div class="song-preview table-cell song-previous">
+                <div class="table-cell">
+                    <img title="?" src="http://images.gs-cdn.net/static/albums/30_album.png" id="song-previous-art" class="img">
+                </div>
+                <div class="table-cell" style="vertical-align: middle;">
+                        <div id="song-previous-name" class="current-song-labels ellipsis">No previous</div>
+                        <div id="song-previous-artist" class="song-preview-artist ellipsis">No artist</div>
+                </div>
+            </div>
+            <div class="table-cell" style="width:34%">
+                <a id="previous" class="control-button" href="#">
+                    <span class="accessible-title" data-translate-text="QUEUE_PREV_SONG">Previous
+                        Song</span>
+                </a>
+                <a id="play" class="control-button play" href="#">
+                    <span class="accessible-title" data-translate-text="PLAY">Play</span>
+                </a>
+                <a id="next" class="control-button" href="#" style="margin: 0 auto 0 0;">
+                <span
+                    class="accessible-title" data-translate-text="QUEUE_NEXT_SONG">Next
+                        Song</span>
+                </a>
+            </div>
+            <div class="song-preview table-cell song-next">
+                <div class="table-cell" style="vertical-align: middle;">
+                    <span id="song-next-name" class="current-song-labels ellipsis">No next</span>
+                    <span id="song-next-artist" class="song-preview-artist ellipsis">No artist</span>
+                </div>
+                <div class="table-cell">
+                    <img title="?" src="http://images.gs-cdn.net/static/albums/30_album.png" id="song-next-art" class="img">
+                </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <img title="?" src="" id="song-previous-art" class="img">
-        <div id="song-previous-artist" ></div>
-        <div id="song-previous-name" ></div>
-    </div>
-    <div>
-        <img title="?" src="" id="song-next-art" class="img">
-        <div id="song-next-artist" ></div>
-        <div id="song-next-name" ></div>
     </div>
     <div>
         <div id="song-current-name" ></div>

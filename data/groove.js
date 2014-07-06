@@ -58,12 +58,12 @@ self.port.on("login", function() {
 
 self.port.on("getNextSong", function() {
 	//console.log("received login in add-on groove script");
-	contentEval("var song = window.Grooveshark.getNextSong(); if (song != null) { var event = document.createEvent('CustomEvent'); event.initCustomEvent(\"GrovesharkNextSongEvent\", true, true, song); document.documentElement.dispatchEvent(event);}");
+	contentEval("var song = window.Grooveshark.getNextSong(); var event = document.createEvent('CustomEvent'); event.initCustomEvent(\"GrovesharkNextSongEvent\", true, true, song); document.documentElement.dispatchEvent(event);");
 });
 
 self.port.on("getPreviousSong", function() {
 	//console.log("received login in add-on groove script");
-	contentEval("var song = window.Grooveshark.getPreviousSong(); if (song != null) { var event = document.createEvent('CustomEvent'); event.initCustomEvent(\"GrovesharkPreviousSongEvent\", true, true, song); document.documentElement.dispatchEvent(event);}");
+	contentEval("var song = window.Grooveshark.getPreviousSong(); var event = document.createEvent('CustomEvent'); event.initCustomEvent(\"GrovesharkPreviousSongEvent\", true, true, song); document.documentElement.dispatchEvent(event);");
 });
 
 self.port.on("pause", function() {

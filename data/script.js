@@ -115,34 +115,42 @@ self.port.on("songStatusChanged", function(object) {
 });
 
 self.port.on("nextSong", function(song) {
+	var songName = "No next";
+	var artistName = "No artist";
+	var artURL = "http://images.gs-cdn.net/static/albums/30_album.png";
 	if (song != null) {
-		var songName = song.songName;
-		var imageElement = $('#song-next-art');
-		imageElement.prop('title', songName);
-		imageElement.prop('src', song.artURL);
-		var titleElement = $('#song-next-name');
-		titleElement.prop('title', songName);
-		titleElement.html(songName);
-		var artistName = song.artistName;
-		var artistElement = $('#song-next-artist');
-		artistElement.prop('title', artistName);
-		artistElement.html(artistName);
+		songName = song.songName;
+		artistName = song.artistName;
+		artURL = song.artURL;
 	}
+	var titleElement = $('#song-next-name');
+	titleElement.prop('title', songName);
+	titleElement.html(songName);
+	var imageElement = $('#song-next-art');
+	imageElement.prop('title', songName);
+	imageElement.prop('src', artURL);
+	var artistElement = $('#song-next-artist');
+	artistElement.prop('title', artistName);
+	artistElement.html(artistName);
 });
 
 
 self.port.on("previousSong", function(song) {
+	var songName = "No previous";
+	var artistName = "No artist";
+	var artURL = "http://images.gs-cdn.net/static/albums/30_album.png";
 	if (song != null) {
-		var songName = song.songName;
-		var imageElement = $('#song-previous-art');
-		imageElement.prop('title', songName);
-		imageElement.prop('src', song.artURL);
-		var titleElement = $('#song-previous-name');
-		titleElement.prop('title', songName);
-		titleElement.html(songName);
-		var artistName = song.artistName;
-		var artistElement = $('#song-previous-artist');
-		artistElement.prop('title', artistName);
-		artistElement.html(artistName);
+		songName = song.songName;
+		artistName = song.artistName;
+		artURL = song.artURL;
 	}
+	var imageElement = $('#song-previous-art');
+	imageElement.prop('title', songName);
+	imageElement.prop('src', artURL);
+	var titleElement = $('#song-previous-name');
+	titleElement.prop('title', songName);
+	titleElement.html(songName);
+	var artistElement = $('#song-previous-artist');
+	artistElement.prop('title', artistName);
+	artistElement.html(artistName);
 });
