@@ -44,7 +44,7 @@ div {
 .now-playing-time {
     color : #FFF;
     font-size: 12px;
-    font-weight: 700;
+    #font-weight: 700;
     #height: 14px;
     #line-height: 14px;
     #max-width: 266px;
@@ -65,7 +65,7 @@ p {
     font-size: 1em;
 }
 
-#current-song-status {
+.song-data {
     display: none;
 }
 
